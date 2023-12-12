@@ -1,4 +1,17 @@
 const cardContainer = document.querySelector(".card-container");
+const dialog = document.getElementById("dialog");
+const buttonAddNewBook = document.querySelector(".add-new-book");
+const buttonCancel = document.querySelector("#cancelBtn");
+
+// OPEN DIALOG
+buttonAddNewBook.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+//CLOSE DIALOG
+buttonCancel.addEventListener("click", () => {
+  dialog.close();
+});
 
 //To store Book objects
 const myLibrary = [];
