@@ -2,6 +2,13 @@ const cardContainer = document.querySelector(".card-container");
 const dialog = document.getElementById("dialog");
 const buttonAddNewBook = document.querySelector(".add-new-book");
 const buttonCancel = document.querySelector("#cancelBtn");
+const buttonSubmit = document.querySelector("#submitBtn");
+const form = document.getElementById("form");
+
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const readInput = document.getElementById("read");
 
 // OPEN DIALOG
 buttonAddNewBook.addEventListener("click", () => {
@@ -10,9 +17,29 @@ buttonAddNewBook.addEventListener("click", () => {
 
 //CLOSE DIALOG
 buttonCancel.addEventListener("click", () => {
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  readInput.value = "";
   dialog.close();
 });
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addBookToLibrary(
+    titleInput.value,
+    authorInput.value,
+    pagesInput.value,
+    readInput.value
+  );
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  readInput.value = "";
+  displayCard();
+
+  dialog.close();
+});
 //To store Book objects
 const myLibrary = [];
 
@@ -28,14 +55,11 @@ function addBookToLibrary(title, author, pages, read) {
   const createNewBook = new Book(title, author, pages, read);
 
   myLibrary.push(createNewBook);
-
   console.log(myLibrary);
 }
-addBookToLibrary("Harry Poter", "Hello", 799, "yes");
-addBookToLibrary("Harry Poter", "Hello", 799, "yes");
-addBookToLibrary("Harry Poter", "Hola", 599, "no");
 
 function displayCard() {
+  cardContainer.innerHTML = "";
   myLibrary.forEach((book) => {
     //Create New Card for each book
     const newCard = document.createElement("div");
@@ -64,4 +88,3 @@ function displayCard() {
     newCard.appendChild(bookState);
   });
 }
-displayCard();
