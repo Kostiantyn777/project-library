@@ -36,7 +36,7 @@ form.addEventListener("submit", (e) => {
   dialog.close();
 });
 //To store Book objects
-const myLibrary = [];
+let myLibrary = [];
 
 //Constructor to create BOOK Objects
 function Book(title, author, pages, read) {
@@ -55,7 +55,7 @@ function addBookToLibrary(title, author, pages, read) {
 
 function displayCard() {
   cardContainer.innerHTML = "";
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     //Create New Card for each book
     const newCard = document.createElement("div");
     newCard.className = "card";
@@ -88,7 +88,11 @@ function displayCard() {
     const buttonRemove = document.createElement("button");
     buttonRemove.className = "remove-button";
     buttonRemove.innerText = "Remove";
+    buttonRemove.dataset.index = index;
     newCard.appendChild(buttonRemove);
+
+    //To Remove Card
+    buttonRemove.addEventListener("click", removeCard);
   });
 }
 
@@ -97,4 +101,12 @@ function clearAllInputs() {
   authorInput.value = "";
   pagesInput.value = "";
   readInput.checked = false;
+}
+
+function removeCard(event) {
+  let indexToRemove = event.target.dataset.index;
+  myLibrary.splice(indexToRemove, 1);
+
+  //Update Library
+  displayCard();
 }
