@@ -84,6 +84,11 @@ function displayCard() {
       : (bookState.innerText = "Not read");
 
     newCard.appendChild(bookState);
+
+    const buttonRemove = document.createElement("button");
+    buttonRemove.className = "remove-button";
+    buttonRemove.innerText = "Remove";
+    newCard.appendChild(buttonRemove);
   });
 }
 
