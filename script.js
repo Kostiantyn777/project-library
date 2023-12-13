@@ -17,10 +17,7 @@ buttonAddNewBook.addEventListener("click", () => {
 
 //CLOSE DIALOG
 buttonCancel.addEventListener("click", () => {
-  titleInput.value = "";
-  authorInput.value = "";
-  pagesInput.value = "";
-  readInput.value = "";
+  clearAllInputs();
   dialog.close();
 });
 
@@ -30,12 +27,10 @@ form.addEventListener("submit", (e) => {
     titleInput.value,
     authorInput.value,
     pagesInput.value,
-    readInput.value
+    readInput.checked
   );
-  titleInput.value = "";
-  authorInput.value = "";
-  pagesInput.value = "";
-  readInput.value = "";
+
+  clearAllInputs();
   displayCard();
 
   dialog.close();
@@ -84,7 +79,17 @@ function displayCard() {
 
     const bookState = document.createElement("div");
     bookState.className = "read-or-no";
-    bookState.innerText = book.read;
+    book.read
+      ? (bookState.innerText = "Read")
+      : (bookState.innerText = "Not read");
+
     newCard.appendChild(bookState);
   });
+}
+
+function clearAllInputs() {
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  readInput.checked = false;
 }
