@@ -10,6 +10,8 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("read");
 
+let createNewBook;
+
 // OPEN DIALOG
 buttonAddNewBook.addEventListener("click", () => {
   dialog.showModal();
@@ -46,8 +48,12 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleBookStatus = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, read) {
-  const createNewBook = new Book(title, author, pages, read);
+  createNewBook = new Book(title, author, pages, read);
 
   myLibrary.push(createNewBook);
   console.log(myLibrary);
@@ -77,13 +83,17 @@ function displayCard() {
     bookPages.innerText = book.pages;
     newCard.appendChild(bookPages);
 
-    const bookState = document.createElement("div");
+    const bookState = document.createElement("button");
     bookState.className = "read-or-no";
     book.read
       ? (bookState.innerText = "Read")
       : (bookState.innerText = "Not read");
 
     newCard.appendChild(bookState);
+    bookState.addEventListener("click", () => {
+      book.toggleBookStatus();
+      displayCard();
+    });
 
     const buttonRemove = document.createElement("button");
     buttonRemove.className = "remove-button";
