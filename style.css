@@ -3,16 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-size: 18px;
+}
 
 .library-header {
   text-align: center;
   font-size: 2.5rem;
+  margin-top: 1rem;
 }
 
 .container-add-new-book-button {
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  margin-top: 2rem;
 }
 
 .add-new-book {
@@ -20,7 +24,6 @@
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: bold;
-  text-align: center;
   color: #fff;
   background-color: #3498db;
   border-radius: 1rem;
@@ -40,6 +43,12 @@ dialog[open] {
 }
 
 dialog {
+  padding: 1rem;
+  border: 0.5rem solid #5780b3;
+  border-radius: 2rem;
+  background-color: #dfeaf1;
+  margin: auto;
+  width: 400px;
   opacity: 0;
   transform: scaleY(0);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out,
@@ -62,12 +71,98 @@ dialog::backdrop {
 dialog[open]::backdrop {
   background-color: rgb(0 0 0 / 0.25);
 }
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 2.5rem;
+}
 
 .card {
-  width: 300px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #e0e9ed;
+}
+
+#form {
+  padding: 1rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.checkbox-container {
+  text-align: center;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  margin-right: 5px;
+}
+
+.buttons-cancel-submit {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#cancelBtn,
+#submitBtn {
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#cancelBtn,
+.remove-button {
+  background-color: #cf3d3d;
+}
+#submitBtn,
+.read-or-no {
+  background-color: #4caf50;
+}
+#submitBtn:hover,
+.read-or-no:hover {
+  background-color: #037206;
+}
+
+#cancelBtn:hover,
+.remove-button:hover {
+  background-color: #ff0404;
+}
+
+.read-or-no,
+.remove-button {
+  border: none;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

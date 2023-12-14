@@ -11,40 +11,44 @@
     <div class="container-add-new-book-button">
       <button class="add-new-book">Add New Book</button>
     </div>
-    <dialog id="dialog">
-      <form id="form">
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Title"
-          required
-        />
+    <div class="dialog-container">
+      <dialog id="dialog">
+        <form id="form">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Title"
+            required
+          />
 
-        <input
-          type="text"
-          id="author"
-          name="author"
-          placeholder="Author"
-          required
-        />
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Author"
+            required
+          />
 
-        <input
-          type="number"
-          id="pages"
-          name="pages"
-          placeholder="Pages"
-          required
-        />
-        <div class="checkbox-container">
-          <label for="read">Have you read it?</label>
-          <input class="checkbox" type="checkbox" id="read" name="read" />
-        </div>
+          <input
+            type="number"
+            id="pages"
+            name="pages"
+            placeholder="Pages"
+            required
+          />
+          <div class="checkbox-container">
+            <label for="read">Have you read it?</label>
+            <input class="checkbox" type="checkbox" id="read" name="read" />
+          </div>
+          <div class="buttons-cancel-submit">
+            <button id="cancelBtn">Cancel</button>
+            <button id="submitBtn" type="submit">Submit</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
 
-        <button id="cancelBtn">Cancel</button>
-        <button id="submitBtn" type="submit">Submit</button>
-      </form>
-    </dialog>
     <div class="card-container"></div>
     <script src="script.js"></script>
   </body>
