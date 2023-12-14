@@ -54,9 +54,7 @@ Book.prototype.toggleBookStatus = function () {
 
 function addBookToLibrary(title, author, pages, read) {
   createNewBook = new Book(title, author, pages, read);
-
   myLibrary.push(createNewBook);
-  console.log(myLibrary);
 }
 
 function displayCard() {
@@ -80,7 +78,7 @@ function displayCard() {
 
     const bookPages = document.createElement("div");
     bookPages.className = "pages";
-    bookPages.innerText = book.pages;
+    bookPages.innerText = `${book.pages} pages`;
     newCard.appendChild(bookPages);
 
     const bookState = document.createElement("button");
